@@ -1,0 +1,22 @@
+table 'DimTransporteur'
+
+	column 'TransporteurID'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: TransporteurID
+
+	column 'Transporteur'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Transporteur
+
+	partition 'DimTransporteur' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DossierDonnees & "DimTransporteur.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Types = Table.TransformColumnTypes(Entetes, {{"TransporteurID", Int64.Type}, {"Transporteur", type text}}, "en-US")
+				in
+				    Types

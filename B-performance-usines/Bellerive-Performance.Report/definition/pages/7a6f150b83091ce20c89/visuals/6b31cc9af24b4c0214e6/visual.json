@@ -1,0 +1,156 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "6b31cc9af24b4c0214e6",
+  "position": {
+    "x": 795,
+    "y": 500,
+    "z": 13000,
+    "height": 210,
+    "width": 465,
+    "tabOrder": 13000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_code_arret"
+                    }
+                  },
+                  "Property": "Arret"
+                }
+              },
+              "queryRef": "dim_code_arret.Arret",
+              "nativeQueryRef": "Arret"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Mesures"
+                    }
+                  },
+                  "Property": "Nb arrêts non planifiés"
+                }
+              },
+              "queryRef": "_Mesures.Nb arrêts non planifiés",
+              "nativeQueryRef": "Nb arrêts non planifiés",
+              "displayName": "Arrêts"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Mesures"
+                    }
+                  },
+                  "Property": "Heures d'arrêt non planifié"
+                }
+              },
+              "queryRef": "_Mesures.Heures d'arrêt non planifié",
+              "nativeQueryRef": "Heures d'arrêt non planifié",
+              "displayName": "Heures"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Mesures"
+                    }
+                  },
+                  "Property": "Durée moyenne d'arrêt (min)"
+                }
+              },
+              "queryRef": "_Mesures.Durée moyenne d'arrêt (min)",
+              "nativeQueryRef": "Durée moyenne d'arrêt (min)",
+              "displayName": "Durée moy."
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "_Mesures"
+                  }
+                },
+                "Property": "Heures d'arrêt non planifié"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "objects": {
+      "grid": [
+        {
+          "properties": {
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Causes d'arrêt de la ligne'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1E4D3A'"
+                    }
+                  }
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

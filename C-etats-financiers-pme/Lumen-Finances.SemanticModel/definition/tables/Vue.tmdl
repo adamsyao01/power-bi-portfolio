@@ -1,0 +1,23 @@
+table 'Vue'
+
+	calculationGroup
+
+		calculationItem 'Mois sélectionné' = SELECTEDMEASURE()
+			ordinal: 0
+
+		calculationItem 'Cumul de l''exercice' = CALCULATE(SELECTEDMEASURE(), DATESYTD(DimDate[Date], "3-31"))
+			ordinal: 1
+
+	column Vue
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+	column Ordinal
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: Ordinal
+
+	partition 'Vue' = calculationGroup

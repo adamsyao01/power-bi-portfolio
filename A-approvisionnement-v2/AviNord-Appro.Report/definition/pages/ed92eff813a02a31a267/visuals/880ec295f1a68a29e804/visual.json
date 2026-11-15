@@ -1,0 +1,104 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "880ec295f1a68a29e804",
+  "position": {
+    "x": 480,
+    "y": 505,
+    "z": 6000,
+    "height": 205,
+    "width": 780,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Les choix de modélisation",
+                    "textStyle": {
+                      "fontSize": "13pt",
+                      "color": "#1F3A5F",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Schéma en étoile, relations 1 → plusieurs à filtrage simple, date/heure automatique désactivée",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Une seule table de dates, sur le calendrier fiscal (comparaison à l'année précédente au même jour fiscal : −364 jours)",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Coûts en format long (Power Query) : une seule mesure de coût, découpée par composante",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Budget ventilé au jour : les comparaisons « à date égale » sont un simple filtre de dates",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Groupe de calcul « Vue temporelle » : chaque mesure passe en cumul de l'exercice sans être dupliquée",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Une trentaine de mesures DAX, rangées par dossier, avec une mesure de contrôle (écart non expliqué = 0)",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

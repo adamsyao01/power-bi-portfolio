@@ -1,0 +1,21 @@
+table 'Étapes du pont'
+
+	column 'Étape'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Étape
+		sortByColumn: 'Ordre'
+
+	column 'Ordre'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: Ordre
+
+	partition 'Étapes du pont' = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [Étape = text, Ordre = Int64.Type], {{"Effet volume", 1}, {"Effet mix", 2}, {"Effet prix", 3}})
+				in
+				    Source

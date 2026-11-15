@@ -1,0 +1,20 @@
+NoCompte,Compte,Categorie,SousCategorie,OrdreCategorie,Signe,CompteAffiche
+4000,Ventes — épiceries,Revenus,Ventes,1,1,4000 · Ventes — épiceries
+4010,Ventes — restauration,Revenus,Ventes,1,1,4010 · Ventes — restauration
+4020,Ventes — export,Revenus,Ventes,1,1,4020 · Ventes — export
+4900,Escomptes et ristournes,Revenus,Escomptes,1,-1,4900 · Escomptes et ristournes
+5000,Matières premières,Coût des ventes,Matières,2,-1,5000 · Matières premières
+5010,Emballage,Coût des ventes,Matières,2,-1,5010 · Emballage
+5100,Main-d'œuvre directe,Coût des ventes,Main-d'œuvre,2,-1,5100 · Main-d'œuvre directe
+5200,Frais généraux de fabrication,Coût des ventes,Frais de fabrication,2,-1,5200 · Frais généraux de fabrication
+6000,Salaires — ventes,Frais de vente,Salaires,4,-1,6000 · Salaires — ventes
+6010,Marketing et promotion,Frais de vente,Marketing,4,-1,6010 · Marketing et promotion
+6020,Transport et livraison,Frais de vente,Transport,4,-1,6020 · Transport et livraison
+6500,Salaires — administration,Frais d'administration,Salaires,5,-1,6500 · Salaires — administration
+6510,Loyer,Frais d'administration,Locaux,5,-1,6510 · Loyer
+6520,Assurances,Frais d'administration,Locaux,5,-1,6520 · Assurances
+6530,Honoraires professionnels,Frais d'administration,Services,5,-1,6530 · Honoraires professionnels
+6540,Informatique,Frais d'administration,Services,5,-1,6540 · Informatique
+7000,Amortissement,Amortissement,Amortissement,7,-1,7000 · Amortissement
+7500,Intérêts sur la dette,Frais financiers,Intérêts,9,-1,7500 · Intérêts sur la dette
+8000,Impôts sur le résultat,Impôts sur le résultat,Impôts,11,-1,8000 · Impôts sur le résultat

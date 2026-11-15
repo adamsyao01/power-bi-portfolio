@@ -1,0 +1,35 @@
+table 'DimTypePoulet'
+
+	column 'TypePouletID'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: TypePouletID
+
+	column 'TypePoulet'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: TypePoulet
+		sortByColumn: 'TypePouletID'
+
+	column 'PoidsCibleKg'
+		dataType: double
+		formatString: 0.00
+		summarizeBy: none
+		sourceColumn: PoidsCibleKg
+
+	column 'PrimeBaseKg'
+		dataType: double
+		isHidden
+		summarizeBy: none
+		sourceColumn: PrimeBaseKg
+
+	partition 'DimTypePoulet' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DossierDonnees & "DimTypePoulet.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Types = Table.TransformColumnTypes(Entetes, {{"TypePouletID", Int64.Type}, {"TypePoulet", type text}, {"PoidsCibleKg", type number}, {"PrimeBaseKg", type number}}, "en-US")
+				in
+				    Types

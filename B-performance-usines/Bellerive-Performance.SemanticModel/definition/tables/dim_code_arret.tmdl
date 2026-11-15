@@ -1,0 +1,32 @@
+table 'dim_code_arret'
+
+	column 'CodeArret'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: CodeArret
+
+	column 'Arret'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Arret
+
+	column 'Categorie'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Categorie
+
+	column 'Planifie'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Planifie
+
+	partition 'dim_code_arret' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DossierDonnees & "dim_code_arret.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Types = Table.TransformColumnTypes(Entetes, {{"CodeArret", type text}, {"Arret", type text}, {"Categorie", type text}, {"Planifie", type text}}, "en-US")
+				in
+				    Types

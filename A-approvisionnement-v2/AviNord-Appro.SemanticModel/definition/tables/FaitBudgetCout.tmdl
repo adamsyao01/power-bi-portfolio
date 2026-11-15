@@ -1,0 +1,43 @@
+table 'FaitBudgetCout'
+
+	column 'Date'
+		dataType: dateTime
+		isHidden
+		summarizeBy: none
+		sourceColumn: Date
+
+	column 'TypePouletID'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: TypePouletID
+
+	column 'Region'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Region
+
+	column 'Composante'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Composante
+
+	column 'Montant'
+		dataType: double
+		isHidden
+		summarizeBy: none
+		sourceColumn: Montant
+
+	partition 'FaitBudgetCout' = m
+		mode: import
+		source =
+				let
+				    Source = BudgetJour,
+				    Colonnes = Table.SelectColumns(Source, {"Date", "TypePouletID", "Region", "MontantPrixBaseBudget", "MontantAjustementBudget", "MontantBonificationBudget", "MontantChargementBudget", "MontantTransportBudget"}),
+				    Long = Table.UnpivotOtherColumns(Colonnes, {"Date", "TypePouletID", "Region"}, "Composante", "Montant"),
+				    Noms = Table.TransformColumns(Long, {"Composante", each Record.FieldOrDefault([MontantPrixBaseBudget = "Prix de base", MontantAjustementBudget = "Ajustement", MontantBonificationBudget = "Bonification", MontantChargementBudget = "Chargement", MontantTransportBudget = "Transport"], _, _), type text}),
+				    Types = Table.TransformColumnTypes(Noms, {{"Montant", type number}})
+				in
+				    Types

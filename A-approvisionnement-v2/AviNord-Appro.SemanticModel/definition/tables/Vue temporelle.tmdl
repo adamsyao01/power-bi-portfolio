@@ -1,0 +1,26 @@
+table 'Vue temporelle'
+
+	calculationGroup
+
+		calculationItem 'Période sélectionnée' = SELECTEDMEASURE()
+			ordinal: 0
+
+		calculationItem 'Cumul de l''exercice' =
+				VAR _ex = MAX(DimDate[Exercice])
+				VAR _fin = MAX(DimDate[Date])
+				RETURN CALCULATE(SELECTEDMEASURE(), REMOVEFILTERS(DimDate), DimDate[Exercice] = _ex, DimDate[Date] <= _fin)
+			ordinal: 1
+
+	column Vue
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+	column Ordinal
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: Ordinal
+
+	partition 'Vue temporelle' = calculationGroup

@@ -1,0 +1,2 @@
+expression DossierDonnees = "C:\Users\yaoad\consul power-bi\portfolio\projets-fictifs\B-performance-usines\data\or\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	annotation PBI_ResultType = Text

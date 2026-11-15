@@ -1,0 +1,53 @@
+table 'fact_arret'
+
+	column 'CodeUsine'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: CodeUsine
+
+	column 'CodeLigne'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: CodeLigne
+
+	column 'Date'
+		dataType: dateTime
+		isHidden
+		summarizeBy: none
+		sourceColumn: Date
+
+	column 'Quart'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Quart
+
+	column 'Debut'
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn
+		summarizeBy: none
+		sourceColumn: Debut
+
+	column 'DureeMin'
+		dataType: double
+		isHidden
+		summarizeBy: none
+		sourceColumn: DureeMin
+
+	column 'CodeArret'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: CodeArret
+
+	partition 'fact_arret' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DossierDonnees & "fact_arret.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Types = Table.TransformColumnTypes(Entetes, {{"CodeUsine", type text}, {"CodeLigne", type text}, {"Date", type date}, {"Quart", type text}, {"Debut", type datetime}, {"DureeMin", type number}, {"CodeArret", type text}}, "en-US")
+				in
+				    Types

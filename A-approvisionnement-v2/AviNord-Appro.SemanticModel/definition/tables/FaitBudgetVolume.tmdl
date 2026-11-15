@@ -1,0 +1,34 @@
+table 'FaitBudgetVolume'
+
+	column 'Date'
+		dataType: dateTime
+		isHidden
+		summarizeBy: none
+		sourceColumn: Date
+
+	column 'TypePouletID'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: TypePouletID
+
+	column 'Region'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Region
+
+	column 'KgPayesBudget'
+		dataType: double
+		isHidden
+		summarizeBy: none
+		sourceColumn: KgPayesBudget
+
+	partition 'FaitBudgetVolume' = m
+		mode: import
+		source =
+				let
+				    Source = BudgetJour,
+				    Colonnes = Table.SelectColumns(Source, {"Date", "TypePouletID", "Region", "KgPayesBudget"})
+				in
+				    Colonnes

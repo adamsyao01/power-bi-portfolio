@@ -1,0 +1,104 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "f93ec62119cdf1b97221",
+  "position": {
+    "x": 480,
+    "y": 435,
+    "z": 6000,
+    "height": 275,
+    "width": 780,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Les choix de modélisation",
+                    "textStyle": {
+                      "fontSize": "13pt",
+                      "color": "#23395B",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Plan comptable hiérarchique (compte → catégorie) et montants signés : revenus positifs, charges négatives",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Table « StructurePL » : les sous-totaux (marge brute, BAIIA, BAII, bénéfice) sont calculés par leur rang, en une seule mesure. Ajouter une ligne à l'état des résultats ne demande aucun nouveau DAX",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Calendrier fiscal d'avril à mars : cumul de l'exercice avec DATESYTD(…, \"3-31\")",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Budget et année précédente comparés à date égale (jusqu'au dernier mois fermé)",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Groupe de calcul « Vue » : mois ou cumul, pour toutes les mesures, sans duplication",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Trésorerie : solde cumulé hebdomadaire, point bas et manque vs seuil calculés dynamiquement",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

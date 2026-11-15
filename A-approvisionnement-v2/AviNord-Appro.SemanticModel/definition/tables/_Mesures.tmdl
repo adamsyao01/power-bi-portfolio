@@ -1,0 +1,151 @@
+table '_Mesures'
+
+	column 'Colonne'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Colonne
+
+	measure 'Dernière date réelle' = CALCULATE(MAX(FaitReceptionLot[DateAbattage]), REMOVEFILTERS())
+		formatString: yyyy-mm-dd
+		displayFolder: 0. Paramètres
+
+	measure 'Référence choisie' = SELECTEDVALUE('Référence'[Référence], "Budget")
+		displayFolder: 0. Paramètres
+
+	measure 'Mise à jour' = "Données au " & FORMAT([Dernière date réelle], "d mmmm yyyy")
+		displayFolder: 0. Paramètres
+
+	measure 'Kg payés' = SUM(FaitReceptionLot[KgPayes])
+		formatString: #,0
+		displayFolder: 1. Réel
+
+	measure 'Coût total' = SUM(FaitCout[Montant])
+		formatString: #,0 \$;-#,0 \$
+		displayFolder: 1. Réel
+
+	measure '$/kg' = DIVIDE([Coût total], [Kg payés])
+		formatString: 0.000 \$
+		displayFolder: 1. Réel
+
+	measure 'Nb lots' = COUNTROWS(FaitReceptionLot)
+		formatString: #,0
+		displayFolder: 1. Réel
+
+	measure 'Têtes reçues' = SUM(FaitReceptionLot[TetesRecues])
+		formatString: #,0
+		displayFolder: 1. Réel
+
+	measure 'Morts en cage' = SUM(FaitReceptionLot[MortsEnCage])
+		formatString: #,0
+		displayFolder: 1. Réel
+
+	measure '% Morts en cage' = DIVIDE([Morts en cage], [Têtes reçues])
+		formatString: 0.00 %
+		displayFolder: 1. Réel
+
+	measure 'Poids moyen vif (kg)' = DIVIDE(SUM(FaitReceptionLot[KgVifsRecus]), [Têtes reçues] - [Morts en cage])
+		formatString: 0.000
+		displayFolder: 1. Réel
+
+	measure 'Kg condamnés' = SUM(FaitCondamnation[KgCondamnes])
+		formatString: #,0
+		displayFolder: 1. Réel
+
+	measure '% Condamnation' = DIVIDE(SUM(FaitReceptionLot[KgCondamnes]), SUM(FaitReceptionLot[KgVifsRecus]))
+		formatString: 0.00 %
+		displayFolder: 1. Réel
+
+	measure 'Kg budget' =
+			VAR _fin = [Dernière date réelle]
+			RETURN CALCULATE(SUM(FaitBudgetVolume[KgPayesBudget]), KEEPFILTERS(DimDate[Date] <= _fin))
+		formatString: #,0
+		displayFolder: 2. Référence
+
+	measure 'Coût budget' =
+			VAR _fin = [Dernière date réelle]
+			RETURN CALCULATE(SUM(FaitBudgetCout[Montant]), KEEPFILTERS(DimDate[Date] <= _fin))
+		formatString: #,0 \$;-#,0 \$
+		displayFolder: 2. Référence
+
+	measure 'Kg AP' =
+			VAR _fin = [Dernière date réelle]
+			VAR _dates = FILTER(VALUES(DimDate[Date]), DimDate[Date] <= _fin)
+			VAR _datesAP = SELECTCOLUMNS(_dates, "Date", DimDate[Date] - 364)   -- 364 j = 13 x 28 : même jour fiscal
+			RETURN CALCULATE([Kg payés], REMOVEFILTERS(DimDate), TREATAS(_datesAP, DimDate[Date]))
+		formatString: #,0
+		displayFolder: 2. Référence
+
+	measure 'Coût AP' =
+			VAR _fin = [Dernière date réelle]
+			VAR _dates = FILTER(VALUES(DimDate[Date]), DimDate[Date] <= _fin)
+			VAR _datesAP = SELECTCOLUMNS(_dates, "Date", DimDate[Date] - 364)
+			RETURN CALCULATE([Coût total], REMOVEFILTERS(DimDate), TREATAS(_datesAP, DimDate[Date]))
+		formatString: #,0 \$;-#,0 \$
+		displayFolder: 2. Référence
+
+	measure 'Kg référence' = IF([Référence choisie] = "Budget", [Kg budget], [Kg AP])
+		formatString: #,0
+		displayFolder: 2. Référence
+
+	measure 'Coût référence' = IF([Référence choisie] = "Budget", [Coût budget], [Coût AP])
+		formatString: #,0 \$;-#,0 \$
+		displayFolder: 2. Référence
+
+	measure '$/kg référence' = DIVIDE([Coût référence], [Kg référence])
+		formatString: 0.000 \$
+		displayFolder: 2. Référence
+
+	measure 'Écart total' = [Coût total] - [Coût référence]
+		formatString: #,0 \$;-#,0 \$
+		displayFolder: 3. Écarts
+
+	measure 'Écart total %' = DIVIDE([Écart total], [Coût référence])
+		formatString: 0.00 %
+		displayFolder: 3. Écarts
+
+	measure 'Écart $/kg' = [$/kg] - [$/kg référence]
+		formatString: 0.000 \$
+		displayFolder: 3. Écarts
+
+	measure 'Coût réel au prix de référence' =
+			SUMX(
+			    CROSSJOIN(VALUES(DimTypePoulet[TypePoulet]), VALUES(DimRegion[Region])),
+			    [Kg payés] * [$/kg référence]
+			)
+		formatString: #,0 \$;-#,0 \$
+		displayFolder: 3. Écarts
+
+	measure 'Effet volume' = ([Kg payés] - [Kg référence]) * [$/kg référence]
+		formatString: #,0 \$;-#,0 \$
+		displayFolder: 3. Écarts
+
+	measure 'Effet mix' = [Coût réel au prix de référence] - [Kg payés] * [$/kg référence]
+		formatString: #,0 \$;-#,0 \$
+		displayFolder: 3. Écarts
+
+	measure 'Effet prix' = [Coût total] - [Coût réel au prix de référence]
+		formatString: #,0 \$;-#,0 \$
+		displayFolder: 3. Écarts
+
+	measure 'Contrôle (doit être 0)' = [Écart total] - ([Effet volume] + [Effet mix] + [Effet prix])
+		formatString: #,0 \$;-#,0 \$
+		displayFolder: 3. Écarts
+
+	measure 'Pont des écarts' =
+			SWITCH(
+			    SELECTEDVALUE('Étapes du pont'[Étape]),
+			    "Effet volume", [Effet volume],
+			    "Effet mix", [Effet mix],
+			    "Effet prix", [Effet prix]
+			)
+		formatString: #,0 \$;-#,0 \$
+		displayFolder: 3. Écarts
+
+	partition '_Mesures' = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [Colonne = text], {})
+				in
+				    Source

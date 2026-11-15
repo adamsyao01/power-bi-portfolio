@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "ca7b707db85d81a59b03",
+  "position": {
+    "x": 152,
+    "y": 46,
+    "z": 2000,
+    "height": 36,
+    "width": 820,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Réception des lots : volumes, mortalité et condamnations",
+                    "textStyle": {
+                      "fontSize": "11pt",
+                      "color": "#8A8F98"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

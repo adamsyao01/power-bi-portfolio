@@ -1,0 +1,55 @@
+// Projet B — Aliments Bellerive (fictif)
+// À coller dans la vue Requête DAX du modèle, puis « Mettre à jour le modèle avec les modifications ».
+DEFINE
+    // ---- 1. Temps et volumes
+    MEASURE fact_production[Temps requis (min)] = SUM ( fact_production[TempsRequisMin] )
+    MEASURE fact_production[Temps de fonctionnement (min)] = SUM ( fact_production[TempsFonctionnementMin] )
+    MEASURE fact_production[Unités produites] = SUM ( fact_production[UnitesProduites] )
+    MEASURE fact_production[Unités bonnes] = SUM ( fact_production[UnitesBonnes] )
+    MEASURE fact_production[Unités rejetées] = SUM ( fact_production[UnitesRejetees] )
+    MEASURE fact_production[Unités théoriques] = SUM ( fact_production[UnitesTheoriques] )
+
+    // ---- 2. TRS
+    MEASURE fact_production[Disponibilité] = DIVIDE ( [Temps de fonctionnement (min)], [Temps requis (min)] )
+    MEASURE fact_production[Performance] = DIVIDE ( [Unités produites], [Unités théoriques] )
+    MEASURE fact_production[Qualité] = DIVIDE ( [Unités bonnes], [Unités produites] )
+    MEASURE fact_production[TRS] = [Disponibilité] * [Performance] * [Qualité]
+    MEASURE fact_production[TRS cible] = 0.85
+    MEASURE fact_production[Écart TRS vs cible] = [TRS] - [TRS cible]
+    MEASURE fact_production[TRS mois précédent] =
+        CALCULATE ( [TRS], DATEADD ( dim_date[Date], -1, MONTH ) )
+    MEASURE fact_production[Variation TRS vs mois précédent] =
+        IF ( NOT ISBLANK ( [TRS mois précédent] ), [TRS] - [TRS mois précédent] )
+    MEASURE fact_production[% rebuts] = DIVIDE ( [Unités rejetées], [Unités produites] )
+
+    // ---- 3. Arrêts
+    MEASURE fact_production[Minutes d'arrêt] = SUM ( fact_arret[DureeMin] )
+    MEASURE fact_production[Minutes d'arrêt non planifié] =
+        CALCULATE ( [Minutes d'arrêt], dim_code_arret[Planifie] = FALSE () )
+    MEASURE fact_production[Nb arrêts non planifiés] =
+        CALCULATE ( COUNTROWS ( fact_arret ), dim_code_arret[Planifie] = FALSE () )
+    MEASURE fact_production[Durée moyenne d'arrêt (min)] =
+        DIVIDE ( [Minutes d'arrêt non planifié], [Nb arrêts non planifiés] )
+    MEASURE fact_production[% du temps d'arrêt] =
+        DIVIDE (
+            [Minutes d'arrêt non planifié],
+            CALCULATE ( [Minutes d'arrêt non planifié], ALLSELECTED ( dim_code_arret ) )
+        )
+    MEASURE fact_production[Nb pannes] =
+        CALCULATE ( COUNTROWS ( fact_arret ), dim_code_arret[Categorie] = "Panne mécanique" )
+    MEASURE fact_production[MTBF (h)] =
+        DIVIDE ( [Temps de fonctionnement (min)], [Nb pannes] ) / 60
+    MEASURE fact_production[MTTR (min)] =
+        DIVIDE (
+            CALCULATE ( [Minutes d'arrêt], dim_code_arret[Categorie] = "Panne mécanique" ),
+            [Nb pannes]
+        )
+
+EVALUATE
+SUMMARIZECOLUMNS (
+    dim_usine[Usine],
+    "Disponibilité", [Disponibilité],
+    "Performance", [Performance],
+    "Qualité", [Qualité],
+    "TRS", [TRS]
+)

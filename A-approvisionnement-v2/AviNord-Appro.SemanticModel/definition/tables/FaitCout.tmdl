@@ -1,0 +1,31 @@
+table 'FaitCout'
+
+	column 'LotID'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: LotID
+
+	column 'Composante'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Composante
+
+	column 'Montant'
+		dataType: double
+		isHidden
+		summarizeBy: none
+		sourceColumn: Montant
+
+	partition 'FaitCout' = m
+		mode: import
+		source =
+				let
+				    Source = LotsBruts,
+				    Colonnes = Table.SelectColumns(Source, {"LotID", "MontantPrixBase", "MontantAjustement", "MontantBonification", "MontantChargement", "MontantTransport"}),
+				    Long = Table.UnpivotOtherColumns(Colonnes, {"LotID"}, "Composante", "Montant"),
+				    Noms = Table.TransformColumns(Long, {"Composante", each Record.FieldOrDefault([MontantPrixBase = "Prix de base", MontantAjustement = "Ajustement", MontantBonification = "Bonification", MontantChargement = "Chargement", MontantTransport = "Transport"], _, _), type text}),
+				    Types = Table.TransformColumnTypes(Noms, {{"Montant", type number}})
+				in
+				    Types

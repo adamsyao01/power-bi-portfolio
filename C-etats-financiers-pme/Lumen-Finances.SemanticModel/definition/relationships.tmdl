@@ -1,0 +1,19 @@
+relationship b3c88855-3153-5eab-b21b-ed718e25810b
+	fromColumn: 'FaitGL'.'Date'
+	toColumn: 'DimDate'.'Date'
+
+relationship a82286fb-5a66-5529-b3c9-1b12ed791549
+	fromColumn: 'FaitGL'.'NoCompte'
+	toColumn: 'DimCompte'.'NoCompte'
+
+relationship 02f2bd9b-7e82-5143-a524-07c6e80a394c
+	fromColumn: 'FaitBudget'.'Date'
+	toColumn: 'DimDate'.'Date'
+
+relationship aeae75a1-c5b6-576b-826c-65a7ec3e7d50
+	fromColumn: 'FaitBudget'.'NoCompte'
+	toColumn: 'DimCompte'.'NoCompte'
+
+relationship 16dde77c-0d68-52de-90ec-23e76a775007
+	fromColumn: 'FaitTresorerie'.'DebutSemaine'
+	toColumn: 'DimDate'.'Date'

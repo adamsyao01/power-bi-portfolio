@@ -1,0 +1,35 @@
+relationship b81a5a09-bf6e-5228-adf0-3fbc2836e0d6
+	fromColumn: 'fact_production'.'Date'
+	toColumn: 'dim_date'.'Date'
+
+relationship 79aadf6a-7c98-5231-8059-5172eb120ca9
+	fromColumn: 'fact_production'.'CodeLigne'
+	toColumn: 'dim_ligne'.'CodeLigne'
+
+relationship 3d50c3db-b81a-5313-9eab-cc9a850b7ead
+	fromColumn: 'fact_production'.'Quart'
+	toColumn: 'dim_quart'.'Quart'
+
+relationship ee300702-7c57-574d-8e59-146fbfee9166
+	fromColumn: 'fact_production'.'CodeProduit'
+	toColumn: 'dim_produit'.'CodeProduit'
+
+relationship fae71adf-175e-5e98-8476-4c149cd8e559
+	fromColumn: 'fact_arret'.'Date'
+	toColumn: 'dim_date'.'Date'
+
+relationship b5e9b679-53c6-5161-acb0-259bffa42325
+	fromColumn: 'fact_arret'.'CodeLigne'
+	toColumn: 'dim_ligne'.'CodeLigne'
+
+relationship 07c9d514-98bf-5b65-b240-16bf1b45815d
+	fromColumn: 'fact_arret'.'Quart'
+	toColumn: 'dim_quart'.'Quart'
+
+relationship febf4bde-1513-5a43-ba3b-abc20689d487
+	fromColumn: 'fact_arret'.'CodeArret'
+	toColumn: 'dim_code_arret'.'CodeArret'
+
+relationship 9a0d43e0-faba-57fc-bf5e-4c83cb707842
+	fromColumn: 'dim_ligne'.'CodeUsine'
+	toColumn: 'dim_usine'.'CodeUsine'

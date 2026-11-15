@@ -1,0 +1,63 @@
+relationship 40ead845-0970-5001-b740-7a9ffa9ebf90
+	fromColumn: 'FaitReceptionLot'.'DateAbattage'
+	toColumn: 'DimDate'.'Date'
+
+relationship 5e197217-ff80-5681-8d86-912e48e8eaa2
+	fromColumn: 'FaitReceptionLot'.'ProducteurID'
+	toColumn: 'DimProducteur'.'ProducteurID'
+
+relationship 82907ee4-2ba7-506e-9619-2a77813c2eff
+	fromColumn: 'DimProducteur'.'Region'
+	toColumn: 'DimRegion'.'Region'
+
+relationship c83e7646-0173-54d6-a37f-54a1720c12c5
+	fromColumn: 'FaitReceptionLot'.'TypePouletID'
+	toColumn: 'DimTypePoulet'.'TypePouletID'
+
+relationship e49eb684-ccb8-56c1-9242-fde17da1fb30
+	fromColumn: 'FaitReceptionLot'.'TransporteurID'
+	toColumn: 'DimTransporteur'.'TransporteurID'
+
+relationship 7fafbe6b-b4a6-5e24-9048-f75371f02f02
+	fromColumn: 'FaitCout'.'LotID'
+	toColumn: 'FaitReceptionLot'.'LotID'
+
+relationship 179c309c-4c9c-5efa-8aeb-80a1f6ae4b63
+	fromColumn: 'FaitCout'.'Composante'
+	toColumn: 'DimComposante'.'Composante'
+
+relationship bef63fbf-aa5c-50ed-ba72-12f343e433f3
+	fromColumn: 'FaitCondamnation'.'LotID'
+	toColumn: 'FaitReceptionLot'.'LotID'
+
+relationship c59882e3-4c97-5515-a341-804bdd5b5224
+	fromColumn: 'FaitCondamnation'.'CauseID'
+	toColumn: 'DimCauseCondamnation'.'CauseID'
+
+relationship 1e62875f-9190-507b-85b4-7bc1acf8c9dc
+	fromColumn: 'FaitBudgetVolume'.'Date'
+	toColumn: 'DimDate'.'Date'
+
+relationship 8addd74a-b25b-556d-bc33-ce5862f058e4
+	fromColumn: 'FaitBudgetVolume'.'TypePouletID'
+	toColumn: 'DimTypePoulet'.'TypePouletID'
+
+relationship 8bfe6361-2219-5d99-8d1a-ea48c5ad1256
+	fromColumn: 'FaitBudgetVolume'.'Region'
+	toColumn: 'DimRegion'.'Region'
+
+relationship df099792-43e2-56ba-9e34-67b9e1d6322c
+	fromColumn: 'FaitBudgetCout'.'Date'
+	toColumn: 'DimDate'.'Date'
+
+relationship 9d4cb070-3fb0-5a20-acb5-fb59f9b0a9f1
+	fromColumn: 'FaitBudgetCout'.'TypePouletID'
+	toColumn: 'DimTypePoulet'.'TypePouletID'
+
+relationship ab914d1a-e39b-5f24-8ada-bdc8d6b7e2e2
+	fromColumn: 'FaitBudgetCout'.'Region'
+	toColumn: 'DimRegion'.'Region'
+
+relationship ad02be2d-c56f-59cf-8f62-6c2913ad624b
+	fromColumn: 'FaitBudgetCout'.'Composante'
+	toColumn: 'DimComposante'.'Composante'

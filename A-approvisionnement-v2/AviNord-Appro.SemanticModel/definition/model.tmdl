@@ -1,0 +1,7 @@
+model Model
+	culture: fr-CA
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: fr-CA
+
+annotation __PBI_TimeIntelligenceEnabled = 0

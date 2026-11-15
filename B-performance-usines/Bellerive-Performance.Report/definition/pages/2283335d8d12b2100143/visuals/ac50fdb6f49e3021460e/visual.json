@@ -1,0 +1,104 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "ac50fdb6f49e3021460e",
+  "position": {
+    "x": 480,
+    "y": 465,
+    "z": 6000,
+    "height": 245,
+    "width": 780,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Les choix techniques",
+                    "textStyle": {
+                      "fontSize": "13pt",
+                      "color": "#1E4D3A",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Lakehouse Fabric : les fichiers bruts restent intacts (bronze), les tables propres sont en Delta (or)",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Notebook PySpark : harmonisation des 3 formats, dédoublonnage, calcul des temps du TRS par quart",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Modèle Direct Lake : Power BI lit directement les tables Delta, sans import ni copie",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Schéma en étoile : 2 tables de faits (production par quart, arrêts) et 6 dimensions partagées",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Sécurité par ligne prévue : chaque directeur d'usine ne voit que son usine",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Cette version publique est une copie en mode Import, sans sécurité par ligne",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

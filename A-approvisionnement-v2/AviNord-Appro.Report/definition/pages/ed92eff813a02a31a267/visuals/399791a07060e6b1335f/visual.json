@@ -1,0 +1,232 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "399791a07060e6b1335f",
+  "position": {
+    "x": 20,
+    "y": 90,
+    "z": 4000,
+    "height": 620,
+    "width": 440,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Le contexte",
+                    "textStyle": {
+                      "fontSize": "13pt",
+                      "color": "#1F3A5F",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "AviNord est un transformateur de volaille fictif au Québec. Le poulet vivant est son premier poste de coût. La direction voyait que le coût s'écartait du budget, sans savoir pourquoi.",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontSize": "6pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "La question métier",
+                    "textStyle": {
+                      "fontSize": "13pt",
+                      "color": "#1F3A5F",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "« On a payé plus (ou moins) que prévu : est-ce le volume, le prix au kilo, ou la provenance des achats ? »",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontSize": "6pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "La méthode : décomposer l'écart",
+                    "textStyle": {
+                      "fontSize": "13pt",
+                      "color": "#1F3A5F",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Effet volume = (kg réels − kg référence) × $/kg référence",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "color": "#E07A1F",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Effet mix = coût réel au prix de référence − kg réels × $/kg référence",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "color": "#E07A1F",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Effet prix = coût réel − coût réel au prix de référence",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "color": "#E07A1F",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Les trois effets s'additionnent exactement à l'écart total, par type de poulet × région, et pour chaque composante du coût.",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontSize": "6pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Les données",
+                    "textStyle": {
+                      "fontSize": "13pt",
+                      "color": "#1F3A5F",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "100 % fictives, générées par un script Python : environ 6 350 lots sur 3 exercices, 42 producteurs, budget par période. Calendrier fiscal de 13 périodes de 4 semaines.",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontSize": "6pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Réalisé par",
+                    "textStyle": {
+                      "fontSize": "13pt",
+                      "color": "#1F3A5F",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Adams Dalqiel Michel Ange Yao · Consultant Power BI · modélisation de données",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Inspiré d'un projet réel en usine, reconstruit sans aucune donnée d'entreprise.",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

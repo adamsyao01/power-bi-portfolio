@@ -1,0 +1,13 @@
+CodeLigne,CodeUsine,Ligne,TypeLigne,CadenceIdealeUnitesMin
+LAV-L1,LAV,Ligne 1 — Cuisson,Cuisson,40
+LAV-L2,LAV,Ligne 2 — Tranchage,Tranchage,75
+LAV-L3,LAV,Ligne 3 — Emballage sous vide,Emballage sous vide,55
+LAV-L4,LAV,Ligne 4 — Mise en barquette,Mise en barquette,60
+DRU-L1,DRU,Ligne 1 — Cuisson,Cuisson,40
+DRU-L2,DRU,Ligne 2 — Tranchage,Tranchage,75
+DRU-L3,DRU,Ligne 3 — Emballage sous vide,Emballage sous vide,55
+DRU-L4,DRU,Ligne 4 — Mise en barquette,Mise en barquette,60
+SAG-L1,SAG,Ligne 1 — Cuisson,Cuisson,40
+SAG-L2,SAG,Ligne 2 — Tranchage,Tranchage,75
+SAG-L3,SAG,Ligne 3 — Emballage sous vide,Emballage sous vide,55
+SAG-L4,SAG,Ligne 4 — Mise en barquette,Mise en barquette,60

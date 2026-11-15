@@ -1,0 +1,217 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "6587aecc300c5c3f4ab5",
+  "position": {
+    "x": 20,
+    "y": 90,
+    "z": 4000,
+    "height": 620,
+    "width": 440,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Le contexte",
+                    "textStyle": {
+                      "fontSize": "13pt",
+                      "color": "#23395B",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Biscuiterie Lumen est une PME québécoise fictive (environ 19 M$ de ventes), avec un exercice du 1er avril au 31 mars. La direction et le comptable suivaient les résultats dans des chiffriers Excel, un mois après la fermeture.",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontSize": "6pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Ce que le tableau de bord apporte",
+                    "textStyle": {
+                      "fontSize": "13pt",
+                      "color": "#23395B",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  État des résultats réel vs budget vs année précédente, en un clic par mois ou en cumul",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Écarts expliqués compte par compte",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Prévision de trésorerie sur 13 semaines, avec alerte de seuil",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontSize": "6pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Ce que les données révèlent",
+                    "textStyle": {
+                      "fontSize": "13pt",
+                      "color": "#23395B",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Les ventes dépassent le budget de 3 %, mais le BAIIA est inférieur d'environ 0,4 M$",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Cause : matières premières (beurre, farine) et dépassement en marketing",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Les ventes à l'export progressent fortement",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  La trésorerie passe sous le seuil de sécurité de la mi-décembre à janvier (nouvelle ligne d'emballage, stocks des Fêtes, acompte d'impôt) : décaler l'achat ou prévoir la marge de crédit",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontSize": "6pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Réalisé par",
+                    "textStyle": {
+                      "fontSize": "13pt",
+                      "color": "#23395B",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Adams Dalqiel Michel Ange Yao · Consultant Power BI · modélisation de données",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Données 100 % fictives, générées par script.",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

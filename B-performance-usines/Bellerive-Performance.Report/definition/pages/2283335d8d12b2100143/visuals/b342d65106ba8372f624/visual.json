@@ -1,0 +1,255 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "b342d65106ba8372f624",
+  "position": {
+    "x": 20,
+    "y": 90,
+    "z": 4000,
+    "height": 620,
+    "width": 440,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Le contexte",
+                    "textStyle": {
+                      "fontSize": "13pt",
+                      "color": "#1E4D3A",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Aliments Bellerive est un transformateur alimentaire fictif : 3 usines au Québec, 4 lignes chacune, 3 quarts par jour. La direction veut comparer la performance des usines sur une base commune.",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontSize": "6pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Le défi",
+                    "textStyle": {
+                      "fontSize": "13pt",
+                      "color": "#1E4D3A",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Chaque usine exporte ses données de production à sa façon : séparateurs, formats de date, langue des colonnes, doublons. Avant de calculer quoi que ce soit, il faut les harmoniser.",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontSize": "6pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "L'indicateur : le TRS",
+                    "textStyle": {
+                      "fontSize": "13pt",
+                      "color": "#1E4D3A",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Disponibilité = temps de fonctionnement ÷ temps requis",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "color": "#D9952B",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Performance = unités produites ÷ unités théoriques",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "color": "#D9952B",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Qualité = unités bonnes ÷ unités produites",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "color": "#D9952B",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "TRS = disponibilité × performance × qualité (cible : 85 %)",
+                    "textStyle": {
+                      "fontSize": "10pt",
+                      "color": "#D9952B",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontSize": "6pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Ce que les données révèlent",
+                    "textStyle": {
+                      "fontSize": "13pt",
+                      "color": "#1E4D3A",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  La ligne 3 de Saguenay perd 13 points de disponibilité depuis mars 2026 (convoyeur)",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Le quart de nuit de Drummondville produit deux fois plus de rebuts",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "•  Les changements de format sont la 1re cause d'arrêt : une piste SMED",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontSize": "6pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Réalisé par",
+                    "textStyle": {
+                      "fontSize": "13pt",
+                      "color": "#1E4D3A",
+                      "fontWeight": "bold"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Adams Dalqiel Michel Ange Yao · Consultant Power BI · modélisation de données",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Données 100 % fictives, générées par script.",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

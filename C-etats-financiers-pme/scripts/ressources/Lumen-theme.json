@@ -1,0 +1,47 @@
+{
+  "name": "Lumen",
+  "dataColors": ["#23395B", "#2A9D8F", "#E9C46A", "#8AB17D", "#E76F51", "#6C8EBF", "#F2B279", "#4A4F57"],
+  "background": "#FFFFFF",
+  "foreground": "#1F2A37",
+  "tableAccent": "#23395B",
+  "good": "#8AB17D",
+  "bad": "#E76F51",
+  "neutral": "#2A9D8F",
+  "maximum": "#23395B",
+  "center": "#E9C46A",
+  "minimum": "#F4F6F9",
+  "textClasses": {
+    "callout": {"fontFace": "Segoe UI Semibold", "fontSize": 24, "color": "#23395B"},
+    "title": {"fontFace": "Segoe UI Semibold", "fontSize": 12, "color": "#23395B"},
+    "header": {"fontFace": "Segoe UI Semibold", "fontSize": 11, "color": "#23395B"},
+    "label": {"fontFace": "Segoe UI", "fontSize": 10, "color": "#4A4F57"}
+  },
+  "visualStyles": {
+    "*": {
+      "*": {
+        "border": [{"show": true, "color": {"solid": {"color": "#E3E7EC"}}, "radius": 8}],
+        "background": [{"show": true, "color": {"solid": {"color": "#FFFFFF"}}, "transparency": 0}],
+        "dropShadow": [{"show": false}],
+        "padding": [{"top": 8, "bottom": 8, "left": 10, "right": 10}]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [{"color": {"solid": {"color": "#F4F6F9"}}, "transparency": 0}],
+        "outspace": [{"color": {"solid": {"color": "#F4F6F9"}}, "transparency": 0}]
+      }
+    },
+    "textbox": {"*": {"border": [{"show": false}], "background": [{"show": false}], "padding": [{"top": 0, "bottom": 0, "left": 0, "right": 0}]}},
+    "image": {"*": {"border": [{"show": false}], "background": [{"show": false}], "padding": [{"top": 0, "bottom": 0, "left": 0, "right": 0}]}},
+    "slicer": {"*": {"border": [{"show": false}], "background": [{"show": false}]}},
+    "tableEx": {"*": {
+      "columnHeaders": [{"backColor": {"solid": {"color": "#23395B"}}, "fontColor": {"solid": {"color": "#FFFFFF"}}}],
+      "values": [{"backColorSecondary": {"solid": {"color": "#F4F6F9"}}}]
+    }},
+    "pivotTable": {"*": {
+      "columnHeaders": [{"backColor": {"solid": {"color": "#23395B"}}, "fontColor": {"solid": {"color": "#FFFFFF"}}}],
+      "rowHeaders": [{"fontColor": {"solid": {"color": "#1F2A37"}}}],
+      "values": [{"backColorSecondary": {"solid": {"color": "#F4F6F9"}}}]
+    }}
+  }
+}

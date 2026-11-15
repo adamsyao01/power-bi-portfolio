@@ -1,0 +1,27 @@
+table 'dim_produit'
+
+	column 'CodeProduit'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: CodeProduit
+
+	column 'Produit'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Produit
+
+	column 'Famille'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Famille
+
+	partition 'dim_produit' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DossierDonnees & "dim_produit.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Types = Table.TransformColumnTypes(Entetes, {{"CodeProduit", type text}, {"Produit", type text}, {"Famille", type text}}, "en-US")
+				in
+				    Types

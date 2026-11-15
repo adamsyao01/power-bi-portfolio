@@ -1,0 +1,184 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "586d3d78239ff00f1027",
+  "position": {
+    "x": 20,
+    "y": 515,
+    "z": 15000,
+    "height": 195,
+    "width": 620,
+    "tabOrder": 15000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_usine"
+                    }
+                  },
+                  "Property": "Usine"
+                }
+              },
+              "queryRef": "dim_usine.Usine",
+              "nativeQueryRef": "Usine",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Mesures"
+                    }
+                  },
+                  "Property": "Disponibilité"
+                }
+              },
+              "queryRef": "_Mesures.Disponibilité",
+              "nativeQueryRef": "Disponibilité"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Mesures"
+                    }
+                  },
+                  "Property": "Performance"
+                }
+              },
+              "queryRef": "_Mesures.Performance",
+              "nativeQueryRef": "Performance"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Mesures"
+                    }
+                  },
+                  "Property": "Qualité"
+                }
+              },
+              "queryRef": "_Mesures.Qualité",
+              "nativeQueryRef": "Qualité"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Mesures"
+                    }
+                  },
+                  "Property": "TRS"
+                }
+              },
+              "queryRef": "_Mesures.TRS",
+              "nativeQueryRef": "TRS"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Mesures"
+                    }
+                  },
+                  "Property": "Variation TRS vs mois précédent"
+                }
+              },
+              "queryRef": "_Mesures.Variation TRS vs mois précédent",
+              "nativeQueryRef": "Variation TRS vs mois précédent",
+              "displayName": "vs mois préc."
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Mesures"
+                    }
+                  },
+                  "Property": "Heures d'arrêt non planifié"
+                }
+              },
+              "queryRef": "_Mesures.Heures d'arrêt non planifié",
+              "nativeQueryRef": "Heures d'arrêt non planifié",
+              "displayName": "Heures d'arrêt"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "grid": [
+        {
+          "properties": {
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Détail par usine'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1E4D3A'"
+                    }
+                  }
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "808d09e80e6116148d29",
+  "position": {
+    "x": 152,
+    "y": 46,
+    "z": 2000,
+    "height": 36,
+    "width": 820,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "D'où vient l'écart ? Effet volume, effet mix, effet prix",
+                    "textStyle": {
+                      "fontSize": "11pt",
+                      "color": "#8A8F98"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

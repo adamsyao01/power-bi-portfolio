@@ -1,0 +1,73 @@
+table 'DimDate'
+	dataCategory: Time
+
+	column 'Date'
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		isKey
+		summarizeBy: none
+		sourceColumn: Date
+
+	column 'AnneeFiscale'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: AnneeFiscale
+
+	column 'Exercice'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Exercice
+		sortByColumn: 'AnneeFiscale'
+
+	column 'MoisFiscal'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: MoisFiscal
+
+	column 'Mois'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Mois
+		sortByColumn: 'MoisFiscal'
+
+	column 'MoisAnnee'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: MoisAnnee
+		sortByColumn: 'CleMois'
+
+	column 'CleMois'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: CleMois
+
+	column 'DebutSemaine'
+		dataType: dateTime
+		formatString: d mmm yyyy
+		summarizeBy: none
+		sourceColumn: DebutSemaine
+
+	column 'AnneeCivile'
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: AnneeCivile
+
+	column 'MoisCivil'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: MoisCivil
+
+	partition 'DimDate' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DossierDonnees & "DimDate.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Types = Table.TransformColumnTypes(Entetes, {{"Date", type date}, {"AnneeFiscale", Int64.Type}, {"Exercice", type text}, {"MoisFiscal", Int64.Type}, {"Mois", type text}, {"MoisAnnee", type text}, {"CleMois", Int64.Type}, {"DebutSemaine", type date}, {"AnneeCivile", Int64.Type}, {"MoisCivil", Int64.Type}}, "en-US")
+				in
+				    Types

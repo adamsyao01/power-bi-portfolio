@@ -1,0 +1,21 @@
+table 'Référence'
+
+	column 'Référence'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Référence
+		sortByColumn: 'Ordre'
+
+	column 'Ordre'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: Ordre
+
+	partition 'Référence' = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [Référence = text, Ordre = Int64.Type], {{"Budget", 1}, {"Année précédente", 2}})
+				in
+				    Source

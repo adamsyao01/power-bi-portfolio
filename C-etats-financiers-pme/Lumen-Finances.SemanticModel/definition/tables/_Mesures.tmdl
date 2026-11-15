@@ -1,0 +1,235 @@
+table '_Mesures'
+
+	column 'Colonne'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Colonne
+
+	measure 'Dernière date réelle' = EOMONTH(CALCULATE(MAX(FaitGL[Date]), REMOVEFILTERS()), 0)
+		formatString: yyyy-mm-dd
+		displayFolder: 0. Paramètres
+
+	measure 'Mise à jour' = "Réel au " & FORMAT([Dernière date réelle], "d mmmm yyyy")
+		displayFolder: 0. Paramètres
+
+	measure 'Réel' = SUM(FaitGL[MontantSigne])
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 1. Bases
+
+	measure 'Budget' =
+			VAR _FIN = EOMONTH(CALCULATE(MAX(FaitGL[Date]), REMOVEFILTERS()), 0)
+			RETURN CALCULATE(SUM(FaitBudget[MontantSigne]), KEEPFILTERS(DimDate[Date] <= _FIN))
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 1. Bases
+
+	measure 'Réel année précédente' =
+			VAR _FIN = EOMONTH(CALCULATE(MAX(FaitGL[Date]), REMOVEFILTERS()), 0)
+			RETURN CALCULATE(CALCULATE([Réel], SAMEPERIODLASTYEAR(DimDate[Date])), KEEPFILTERS(DimDate[Date] <= _FIN))
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 1. Bases
+
+	measure 'Écart vs budget (fav. +)' = [Réel] - [Budget]
+		formatString: +#,0 \$;-#,0 \$;-
+		displayFolder: 1. Bases
+
+	measure 'Montant réel' = SUM(FaitGL[Montant])
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 1. Bases
+
+	measure 'Montant budget' =
+			VAR _FIN = EOMONTH(CALCULATE(MAX(FaitGL[Date]), REMOVEFILTERS()), 0)
+			RETURN CALCULATE(SUM(FaitBudget[Montant]), KEEPFILTERS(DimDate[Date] <= _FIN))
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 1. Bases
+
+	measure 'PL Réel' =
+			VAR _o = SELECTEDVALUE(StructurePL[Ordre])
+			VAR _t = SELECTEDVALUE(StructurePL[TypeLigne])
+			RETURN
+			    SWITCH(
+			        _t,
+			        "Détail", CALCULATE([Réel], DimCompte[OrdreCategorie] = _o),
+			        "Sous-total", CALCULATE([Réel], DimCompte[OrdreCategorie] < _o)
+			    )
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 2. État des résultats
+
+	measure 'PL Budget' =
+			VAR _o = SELECTEDVALUE(StructurePL[Ordre])
+			VAR _t = SELECTEDVALUE(StructurePL[TypeLigne])
+			RETURN
+			    SWITCH(
+			        _t,
+			        "Détail", CALCULATE([Budget], DimCompte[OrdreCategorie] = _o),
+			        "Sous-total", CALCULATE([Budget], DimCompte[OrdreCategorie] < _o)
+			    )
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 2. État des résultats
+
+	measure 'PL Année précédente' =
+			VAR _o = SELECTEDVALUE(StructurePL[Ordre])
+			VAR _t = SELECTEDVALUE(StructurePL[TypeLigne])
+			RETURN
+			    SWITCH(
+			        _t,
+			        "Détail", CALCULATE([Réel année précédente], DimCompte[OrdreCategorie] = _o),
+			        "Sous-total", CALCULATE([Réel année précédente], DimCompte[OrdreCategorie] < _o)
+			    )
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 2. État des résultats
+
+	measure 'PL Écart vs budget' = [PL Réel] - [PL Budget]
+		formatString: +#,0 \$;-#,0 \$;-
+		displayFolder: 2. État des résultats
+
+	measure 'PL Écart vs budget %' = DIVIDE([PL Écart vs budget], ABS([PL Budget]))
+		formatString: 0.0 %;-0.0 %;-
+		displayFolder: 2. État des résultats
+
+	measure 'PL Écart vs année préc.' = [PL Réel] - [PL Année précédente]
+		formatString: +#,0 \$;-#,0 \$;-
+		displayFolder: 2. État des résultats
+
+	measure 'PL % des revenus' = DIVIDE([PL Réel], CALCULATE([Réel], DimCompte[OrdreCategorie] = 1))
+		formatString: 0.0 %;-0.0 %;-
+		displayFolder: 2. État des résultats
+
+	measure 'Revenus' = CALCULATE([Réel], DimCompte[OrdreCategorie] = 1)
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 3. Indicateurs
+
+	measure 'Revenus budget' = CALCULATE([Budget], DimCompte[OrdreCategorie] = 1)
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 3. Indicateurs
+
+	measure 'Écart revenus vs budget %' = DIVIDE([Revenus] - [Revenus budget], [Revenus budget])
+		formatString: 0.0 %;-0.0 %;-
+		displayFolder: 3. Indicateurs
+
+	measure 'Marge brute' = CALCULATE([Réel], DimCompte[OrdreCategorie] < 3)
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 3. Indicateurs
+
+	measure 'Marge brute %' = DIVIDE([Marge brute], [Revenus])
+		formatString: 0.0 %;-0.0 %;-
+		displayFolder: 3. Indicateurs
+
+	measure 'Marge brute % budget' = DIVIDE(CALCULATE([Budget], DimCompte[OrdreCategorie] < 3), [Revenus budget])
+		formatString: 0.0 %;-0.0 %;-
+		displayFolder: 3. Indicateurs
+
+	measure 'BAIIA' = CALCULATE([Réel], DimCompte[OrdreCategorie] < 6)
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 3. Indicateurs
+
+	measure 'BAIIA budget' = CALCULATE([Budget], DimCompte[OrdreCategorie] < 6)
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 3. Indicateurs
+
+	measure 'Écart BAIIA vs budget' = [BAIIA] - [BAIIA budget]
+		formatString: +#,0 \$;-#,0 \$;-
+		displayFolder: 3. Indicateurs
+
+	measure 'Pont du BAIIA' = IF(MAX(DimCompte[OrdreCategorie]) < 6, [Écart vs budget (fav. +)])
+		formatString: +#,0 \$;-#,0 \$;-
+		displayFolder: 3. Indicateurs
+
+	measure 'BAIIA %' = DIVIDE([BAIIA], [Revenus])
+		formatString: 0.0 %;-0.0 %;-
+		displayFolder: 3. Indicateurs
+
+	measure 'Bénéfice net' = CALCULATE([Réel], DimCompte[OrdreCategorie] < 12)
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 3. Indicateurs
+
+	measure 'Solde initial' = 1385000
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 4. Trésorerie
+
+	measure 'Seuil de sécurité' = 150000
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 4. Trésorerie
+
+	measure 'Flux net' = SUM(FaitTresorerie[Montant])
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 4. Trésorerie
+
+	measure 'Encaissements' = CALCULATE([Flux net], FaitTresorerie[Montant] > 0)
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 4. Trésorerie
+
+	measure 'Décaissements' = -CALCULATE([Flux net], FaitTresorerie[Montant] < 0)
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 4. Trésorerie
+
+	measure 'Flux réels' = CALCULATE([Flux net], FaitTresorerie[TypeDonnee] = "Réel")
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 4. Trésorerie
+
+	measure 'Flux prévus' = CALCULATE([Flux net], FaitTresorerie[TypeDonnee] = "Prévision")
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 4. Trésorerie
+
+	measure 'Dernière semaine réelle' = CALCULATE(MAX(FaitTresorerie[DebutSemaine]), FaitTresorerie[TypeDonnee] = "Réel", REMOVEFILTERS())
+		formatString: d mmm yyyy
+		displayFolder: 4. Trésorerie
+
+	measure 'Solde de trésorerie' =
+			IF(
+			    NOT ISEMPTY(FaitTresorerie),
+			    VAR _d = MAX(DimDate[Date])
+			    RETURN [Solde initial] + CALCULATE([Flux net], REMOVEFILTERS(DimDate), DimDate[Date] <= _d)
+			)
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 4. Trésorerie
+
+	measure 'Solde réel' = IF(MIN(DimDate[DebutSemaine]) <= [Dernière semaine réelle], [Solde de trésorerie])
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 4. Trésorerie
+
+	measure 'Solde prévu' = IF(MAX(DimDate[DebutSemaine]) >= [Dernière semaine réelle], [Solde de trésorerie])
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 4. Trésorerie
+
+	measure 'Seuil' = IF(NOT ISEMPTY(FaitTresorerie), [Seuil de sécurité])
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 4. Trésorerie
+
+	measure 'Solde actuel' =
+			VAR _s = [Dernière semaine réelle]
+			RETURN [Solde initial] + CALCULATE([Flux net], REMOVEFILTERS(), FaitTresorerie[DebutSemaine] <= _s)
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 4. Trésorerie
+
+	measure 'Solde minimum prévu' =
+			MINX(
+			    CALCULATETABLE(VALUES(FaitTresorerie[DebutSemaine]), FaitTresorerie[TypeDonnee] = "Prévision", REMOVEFILTERS()),
+			    VAR _w = FaitTresorerie[DebutSemaine]
+			    RETURN [Solde initial] + CALCULATE([Flux net], REMOVEFILTERS(), FaitTresorerie[DebutSemaine] <= _w)
+			)
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 4. Trésorerie
+
+	measure 'Semaine du point bas' =
+			VAR _sem =
+			    ADDCOLUMNS(
+			        CALCULATETABLE(VALUES(FaitTresorerie[DebutSemaine]), FaitTresorerie[TypeDonnee] = "Prévision", REMOVEFILTERS()),
+			        "@solde", VAR _w = FaitTresorerie[DebutSemaine]
+			                  RETURN CALCULATE([Flux net], REMOVEFILTERS(), FaitTresorerie[DebutSemaine] <= _w)
+			    )
+			VAR _bas = TOPN(1, _sem, [@solde], ASC)
+			RETURN FORMAT(MAXX(_bas, FaitTresorerie[DebutSemaine]), "d mmm yyyy")
+		displayFolder: 4. Trésorerie
+
+	measure 'Manque vs seuil' = MAX(0, [Seuil de sécurité] - [Solde minimum prévu])
+		formatString: #,0 \$;(#,0 \$);-
+		displayFolder: 4. Trésorerie
+
+	partition '_Mesures' = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [Colonne = text], {})
+				in
+				    Source

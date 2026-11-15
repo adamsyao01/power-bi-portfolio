@@ -1,0 +1,81 @@
+table 'FaitReceptionLot'
+
+	column 'LotID'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: LotID
+
+	column 'NoLot'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: NoLot
+
+	column 'DateAbattage'
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		summarizeBy: none
+		sourceColumn: DateAbattage
+
+	column 'ProducteurID'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: ProducteurID
+
+	column 'TypePouletID'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: TypePouletID
+
+	column 'TransporteurID'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: TransporteurID
+
+	column 'TetesRecues'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: TetesRecues
+
+	column 'MortsEnCage'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: MortsEnCage
+
+	column 'KgVifsRecus'
+		dataType: double
+		isHidden
+		summarizeBy: none
+		sourceColumn: KgVifsRecus
+
+	column 'KgMortsEnCage'
+		dataType: double
+		isHidden
+		summarizeBy: none
+		sourceColumn: KgMortsEnCage
+
+	column 'KgCondamnes'
+		dataType: double
+		isHidden
+		summarizeBy: none
+		sourceColumn: KgCondamnes
+
+	column 'KgPayes'
+		dataType: double
+		isHidden
+		summarizeBy: none
+		sourceColumn: KgPayes
+
+	partition 'FaitReceptionLot' = m
+		mode: import
+		source =
+				let
+				    Source = LotsBruts,
+				    SansMontants = Table.RemoveColumns(Source, {"MontantPrixBase", "MontantAjustement", "MontantBonification", "MontantChargement", "MontantTransport"})
+				in
+				    SansMontants

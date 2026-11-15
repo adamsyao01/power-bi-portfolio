@@ -1,0 +1,65 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY24SU10",
+      "reportVersionAtImport": {
+        "visual": "1.8.101",
+        "report": "2.0.101",
+        "page": "1.3.101"
+      },
+      "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "AviNord-theme.json",
+      "reportVersionAtImport": {
+        "visual": "1.8.101",
+        "report": "2.0.101",
+        "page": "1.3.101"
+      },
+      "type": "RegisteredResources"
+    }
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY24SU10",
+          "path": "BaseThemes/CY24SU10.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "AviNord-theme.json",
+          "path": "AviNord-theme.json",
+          "type": "CustomTheme"
+        },
+        {
+          "name": "AviNord-logo.svg",
+          "path": "AviNord-logo.svg",
+          "type": "Image"
+        },
+        {
+          "name": "AviNord-modele.svg",
+          "path": "AviNord-modele.svg",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

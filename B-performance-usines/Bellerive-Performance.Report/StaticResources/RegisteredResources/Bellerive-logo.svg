@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="96" viewBox="0 0 300 96">
+  <!-- Logo FICTIF — Aliments Bellerive n'existe pas -->
+  <rect x="4" y="8" width="80" height="80" rx="18" fill="#1E4D3A"/>
+  <!-- feuille + engrenage stylisés -->
+  <circle cx="44" cy="48" r="22" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-dasharray="8 5"/>
+  <path d="M44 32 C56 38 58 54 44 64 C30 54 32 38 44 32 Z" fill="#D9952B"/>
+  <path d="M44 36 L44 62" stroke="#1E4D3A" stroke-width="2"/>
+  <text x="100" y="56" font-family="Segoe UI Semibold, Segoe UI, Arial, sans-serif" font-size="38" fill="#1E4D3A" font-weight="600">Belle<tspan fill="#D9952B">rive</tspan></text>
+  <text x="102" y="80" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#8A8F98" letter-spacing="2">ALIMENTS · QUÉBEC</text>
+</svg>

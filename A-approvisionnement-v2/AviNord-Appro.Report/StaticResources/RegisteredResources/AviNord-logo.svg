@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="96" viewBox="0 0 300 96">
+  <!-- Logo FICTIF — AviNord n'existe pas -->
+  <rect x="4" y="8" width="80" height="80" rx="18" fill="#1F3A5F"/>
+  <!-- étoile du nord stylisée -->
+  <path d="M44 18 L50 42 L74 48 L50 54 L44 78 L38 54 L14 48 L38 42 Z" fill="#FFFFFF"/>
+  <circle cx="44" cy="48" r="6" fill="#E07A1F"/>
+  <text x="100" y="56" font-family="Segoe UI Semibold, Segoe UI, Arial, sans-serif" font-size="40" fill="#1F3A5F" font-weight="600">Avi<tspan fill="#E07A1F">Nord</tspan></text>
+  <text x="102" y="80" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#8A8F98" letter-spacing="2">VOLAILLE · QUÉBEC</text>
+</svg>

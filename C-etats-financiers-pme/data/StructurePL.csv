@@ -1,0 +1,13 @@
+Ordre,LignePL,TypeLigne
+1,Revenus,Détail
+2,Coût des ventes,Détail
+3,Marge brute,Sous-total
+4,Frais de vente,Détail
+5,Frais d'administration,Détail
+6,BAIIA,Sous-total
+7,Amortissement,Détail
+8,Bénéfice d'exploitation (BAII),Sous-total
+9,Frais financiers,Détail
+10,Bénéfice avant impôts,Sous-total
+11,Impôts sur le résultat,Détail
+12,Bénéfice net,Sous-total

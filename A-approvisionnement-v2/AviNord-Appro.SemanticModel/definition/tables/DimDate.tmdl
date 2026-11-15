@@ -1,0 +1,103 @@
+table 'DimDate'
+	dataCategory: Time
+
+	column 'Date'
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		isKey
+		summarizeBy: none
+		sourceColumn: Date
+
+	column 'Exercice'
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Exercice
+
+	column 'NoPeriode'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: NoPeriode
+
+	column 'Periode'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Periode
+		sortByColumn: 'NoPeriode'
+
+	column 'ExercicePeriode'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: ExercicePeriode
+		sortByColumn: 'CleExercicePeriode'
+
+	column 'CleExercicePeriode'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: CleExercicePeriode
+
+	column 'SemaineExercice'
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: SemaineExercice
+
+	column 'SemainePeriode'
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: SemainePeriode
+
+	column 'JourPeriode'
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: JourPeriode
+
+	column 'DebutPeriode'
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		summarizeBy: none
+		sourceColumn: DebutPeriode
+
+	column 'FinPeriode'
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		summarizeBy: none
+		sourceColumn: FinPeriode
+
+	column 'JourSemaine'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: JourSemaine
+
+	column 'NomJour'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: NomJour
+		sortByColumn: 'JourSemaine'
+
+	column 'AnneeCivile'
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: AnneeCivile
+
+	column 'MoisCivil'
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: MoisCivil
+
+	partition 'DimDate' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DossierDonnees & "DimDate.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Types = Table.TransformColumnTypes(Entetes, {{"Date", type date}, {"Exercice", Int64.Type}, {"NoPeriode", Int64.Type}, {"Periode", type text}, {"ExercicePeriode", type text}, {"CleExercicePeriode", Int64.Type}, {"SemaineExercice", Int64.Type}, {"SemainePeriode", Int64.Type}, {"JourPeriode", Int64.Type}, {"DebutPeriode", type date}, {"FinPeriode", type date}, {"JourSemaine", Int64.Type}, {"NomJour", type text}, {"AnneeCivile", Int64.Type}, {"MoisCivil", Int64.Type}}, "en-US")
+				in
+				    Types

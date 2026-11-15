@@ -1,0 +1,39 @@
+table 'DimProducteur'
+
+	column 'ProducteurID'
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: ProducteurID
+
+	column 'Producteur'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Producteur
+
+	column 'Region'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Region
+
+	column 'DistanceKm'
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: DistanceKm
+
+	column 'TailleFerme'
+		dataType: string
+		summarizeBy: none
+		sourceColumn: TailleFerme
+
+	partition 'DimProducteur' = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DossierDonnees & "DimProducteur.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Entetes = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Types = Table.TransformColumnTypes(Entetes, {{"ProducteurID", Int64.Type}, {"Producteur", type text}, {"Region", type text}, {"DistanceKm", Int64.Type}, {"TailleFerme", type text}}, "en-US")
+				in
+				    Types

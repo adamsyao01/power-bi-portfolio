@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "55cf91dcb0cb844ad847",
+  "position": {
+    "x": 20,
+    "y": 640,
+    "z": 9000,
+    "height": 70,
+    "width": 1240,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Lecture : les charges sont entre parenthèses. Un écart positif est favorable (revenus plus élevés ou charges plus faibles que prévu), un écart négatif est défavorable. Les sous-totaux (marge brute, BAIIA, BAII, bénéfice) sont calculés par la structure de l'état des résultats, sans aucune ligne codée en dur dans le visuel.",
+                    "textStyle": {
+                      "fontSize": "10.5pt",
+                      "color": "#1F2A37"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

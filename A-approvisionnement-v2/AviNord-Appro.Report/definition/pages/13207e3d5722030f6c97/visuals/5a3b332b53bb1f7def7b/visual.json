@@ -1,0 +1,219 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "5a3b332b53bb1f7def7b",
+  "position": {
+    "x": 20,
+    "y": 160,
+    "z": 7000,
+    "height": 550,
+    "width": 960,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FaitReceptionLot"
+                    }
+                  },
+                  "Property": "NoLot"
+                }
+              },
+              "queryRef": "FaitReceptionLot.NoLot",
+              "nativeQueryRef": "NoLot"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FaitReceptionLot"
+                    }
+                  },
+                  "Property": "DateAbattage"
+                }
+              },
+              "queryRef": "FaitReceptionLot.DateAbattage",
+              "nativeQueryRef": "DateAbattage"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimProducteur"
+                    }
+                  },
+                  "Property": "Producteur"
+                }
+              },
+              "queryRef": "DimProducteur.Producteur",
+              "nativeQueryRef": "Producteur"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimTypePoulet"
+                    }
+                  },
+                  "Property": "TypePoulet"
+                }
+              },
+              "queryRef": "DimTypePoulet.TypePoulet",
+              "nativeQueryRef": "TypePoulet"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimTransporteur"
+                    }
+                  },
+                  "Property": "Transporteur"
+                }
+              },
+              "queryRef": "DimTransporteur.Transporteur",
+              "nativeQueryRef": "Transporteur"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Mesures"
+                    }
+                  },
+                  "Property": "Têtes reçues"
+                }
+              },
+              "queryRef": "_Mesures.Têtes reçues",
+              "nativeQueryRef": "Têtes reçues"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Mesures"
+                    }
+                  },
+                  "Property": "Kg payés"
+                }
+              },
+              "queryRef": "_Mesures.Kg payés",
+              "nativeQueryRef": "Kg payés"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Mesures"
+                    }
+                  },
+                  "Property": "Coût total"
+                }
+              },
+              "queryRef": "_Mesures.Coût total",
+              "nativeQueryRef": "Coût total"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Mesures"
+                    }
+                  },
+                  "Property": "$/kg"
+                }
+              },
+              "queryRef": "_Mesures.$/kg",
+              "nativeQueryRef": "$/kg"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Mesures"
+                    }
+                  },
+                  "Property": "% Morts en cage"
+                }
+              },
+              "queryRef": "_Mesures.% Morts en cage",
+              "nativeQueryRef": "% Morts en cage"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "grid": [
+        {
+          "properties": {
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Lots'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#1F3A5F'"
+                    }
+                  }
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

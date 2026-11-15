@@ -1,0 +1,114 @@
+table '_Mesures'
+
+	column 'Colonne'
+		dataType: string
+		isHidden
+		summarizeBy: none
+		sourceColumn: Colonne
+
+	measure 'Mise à jour' = "Données au " & FORMAT(MAX(fact_production[Date]), "d mmmm yyyy")
+		displayFolder: 0. Paramètres
+
+	measure 'Temps requis (min)' = SUM(fact_production[TempsRequisMin])
+		formatString: #,0
+		displayFolder: 1. Temps et volumes
+
+	measure 'Temps de fonctionnement (min)' = SUM(fact_production[TempsFonctionnementMin])
+		formatString: #,0
+		displayFolder: 1. Temps et volumes
+
+	measure 'Unités produites' = SUM(fact_production[UnitesProduites])
+		formatString: #,0
+		displayFolder: 1. Temps et volumes
+
+	measure 'Unités bonnes' = SUM(fact_production[UnitesBonnes])
+		formatString: #,0
+		displayFolder: 1. Temps et volumes
+
+	measure 'Unités rejetées' = SUM(fact_production[UnitesRejetees])
+		formatString: #,0
+		displayFolder: 1. Temps et volumes
+
+	measure 'Unités théoriques' = SUM(fact_production[UnitesTheoriques])
+		formatString: #,0
+		displayFolder: 1. Temps et volumes
+
+	measure 'Disponibilité' = DIVIDE([Temps de fonctionnement (min)], [Temps requis (min)])
+		formatString: 0.0 %
+		displayFolder: 2. TRS
+
+	measure 'Performance' = DIVIDE([Unités produites], [Unités théoriques])
+		formatString: 0.0 %
+		displayFolder: 2. TRS
+
+	measure 'Qualité' = DIVIDE([Unités bonnes], [Unités produites])
+		formatString: 0.0 %
+		displayFolder: 2. TRS
+
+	measure 'TRS' = [Disponibilité] * [Performance] * [Qualité]
+		formatString: 0.0 %
+		displayFolder: 2. TRS
+
+	measure 'TRS cible' = 0.85
+		formatString: 0.0 %
+		displayFolder: 2. TRS
+
+	measure 'Écart TRS vs cible' = [TRS] - [TRS cible]
+		formatString: +0.0 %;-0.0 %
+		displayFolder: 2. TRS
+
+	measure 'TRS mois précédent' = CALCULATE([TRS], DATEADD(dim_date[Date], -1, MONTH))
+		formatString: 0.0 %
+		displayFolder: 2. TRS
+
+	measure 'Variation TRS vs mois précédent' = IF(NOT ISBLANK([TRS mois précédent]), [TRS] - [TRS mois précédent])
+		formatString: +0.0 %;-0.0 %
+		displayFolder: 2. TRS
+
+	measure '% rebuts' = DIVIDE([Unités rejetées], [Unités produites])
+		formatString: 0.00 %
+		displayFolder: 2. TRS
+
+	measure 'Minutes d''arrêt' = SUM(fact_arret[DureeMin])
+		formatString: #,0
+		displayFolder: 3. Arrêts
+
+	measure 'Minutes d''arrêt non planifié' = CALCULATE([Minutes d'arrêt], dim_code_arret[Planifie] = "False")
+		formatString: #,0
+		displayFolder: 3. Arrêts
+
+	measure 'Heures d''arrêt non planifié' = [Minutes d'arrêt non planifié] / 60
+		formatString: #,0
+		displayFolder: 3. Arrêts
+
+	measure 'Nb arrêts non planifiés' = CALCULATE(COUNTROWS(fact_arret), dim_code_arret[Planifie] = "False")
+		formatString: #,0
+		displayFolder: 3. Arrêts
+
+	measure 'Durée moyenne d''arrêt (min)' = DIVIDE([Minutes d'arrêt non planifié], [Nb arrêts non planifiés])
+		formatString: 0.0
+		displayFolder: 3. Arrêts
+
+	measure '% du temps d''arrêt' = DIVIDE([Minutes d'arrêt non planifié], CALCULATE([Minutes d'arrêt non planifié], ALLSELECTED(dim_code_arret)))
+		formatString: 0.0 %
+		displayFolder: 3. Arrêts
+
+	measure 'Nb pannes' = CALCULATE(COUNTROWS(fact_arret), dim_code_arret[Categorie] = "Panne mécanique")
+		formatString: #,0
+		displayFolder: 3. Arrêts
+
+	measure 'MTBF (h)' = DIVIDE([Temps de fonctionnement (min)], [Nb pannes]) / 60
+		formatString: 0.0
+		displayFolder: 3. Arrêts
+
+	measure 'MTTR (min)' = DIVIDE(CALCULATE([Minutes d'arrêt], dim_code_arret[Categorie] = "Panne mécanique"), [Nb pannes])
+		formatString: 0.0
+		displayFolder: 3. Arrêts
+
+	partition '_Mesures' = m
+		mode: import
+		source =
+				let
+				    Source = #table(type table [Colonne = text], {})
+				in
+				    Source

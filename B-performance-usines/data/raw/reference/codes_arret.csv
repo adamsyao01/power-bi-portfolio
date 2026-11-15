@@ -1,0 +1,11 @@
+CodeArret,Arret,Categorie,Planifie
+PL-01,Pause planifiée,Arrêt planifié,True
+PL-02,Nettoyage planifié,Arrêt planifié,True
+CF-01,Changement de format,Changement de format,False
+PM-01,Panne — trancheuse,Panne mécanique,False
+PM-02,Panne — scelleuse,Panne mécanique,False
+PM-04,Panne — convoyeur,Panne mécanique,False
+MM-01,Manque de matière première,Manque de matière,False
+MM-02,Manque d'emballage,Manque de matière,False
+QA-01,Retenue qualité,Qualité,False
+PE-01,Manque de personnel,Main-d'œuvre,False
